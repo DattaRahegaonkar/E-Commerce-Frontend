@@ -21,33 +21,33 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="shadow-md bg-white">
+    <nav className="shadow-md bg-gradient-to-r from-gray-900 via-black to-gray-900 sticky top-0 z-50 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo Section */}
-          <NavLink to={auth ? "/" : "/signup"} className="text-xl font-bold">
+          <NavLink
+            to={auth ? "/" : "/signup"}
+            className="text-2xl font-extrabold tracking-wide text-purple-400 hover:text-purple-500 transition"
+          >
             Logo
           </NavLink>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex space-x-6 items-center">
             {auth ? (
               <>
-                <NavLink to="/" className="nav-link">
+                <NavLink to="/" className="nav-link text-gray-200 hover:text-purple-400">
                   Products
                 </NavLink>
-                <NavLink to="/add" className="nav-link">
+                <NavLink to="/add" className="nav-link text-gray-200 hover:text-purple-400">
                   Add Product
                 </NavLink>
-                <NavLink to="/update" className="nav-link">
-                  Update Product
-                </NavLink>
-                <NavLink to="/profile" className="nav-link">
+                <NavLink to="/profile" className="nav-link text-gray-200 hover:text-purple-400">
                   Profile
                 </NavLink>
                 <NavLink
                   to="/signup"
-                  className="nav-link text-red-500"
+                  className="nav-link text-red-400 hover:text-red-500 font-semibold"
                   onClick={logout}
                 >
                   Logout ({JSON.parse(auth).name})
@@ -55,13 +55,13 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <NavLink to="/" className="nav-link">
+                <NavLink to="/" className="nav-link text-gray-200 hover:text-purple-400">
                   Products
                 </NavLink>
-                <NavLink to="/signup" className="nav-link">
+                <NavLink to="/signup" className="nav-link text-gray-200 hover:text-purple-400">
                   SignUp
                 </NavLink>
-                <NavLink to="/login" className="nav-link">
+                <NavLink to="/login" className="nav-link text-gray-200 hover:text-purple-400">
                   Login
                 </NavLink>
               </>
@@ -71,17 +71,17 @@ const Navbar = () => {
           {/* Search Input (Hidden on small screens) */}
           {auth && (
             <div className="hidden md:flex">
-              <form className="flex">
+              <form className="flex items-center" onSubmit={handleSearch}>
                 <input
                   type="text"
                   placeholder="Search"
-                  className="outline-1 h-10 w-64 rounded-3xl pl-5 border border-gray-300"
+                  className="h-10 w-64 rounded-full pl-5 border border-gray-700 bg-gray-800 text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:outline-none transition"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
                 <button
-                  className=" ml-2 outline-none rounded-4xl pl-4 pr-4 bg-blue-400"
-                  onClick={handleSearch}
+                  type="submit"
+                  className="ml-2 px-4 py-2 rounded-full bg-purple-600 text-white hover:bg-purple-700 transition"
                 >
                   Search
                 </button>
@@ -91,34 +91,31 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-600"
+            className="md:hidden text-gray-300"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="md:hidden bg-gray-100 p-4 space-y-4 text-center">
+        <div className="md:hidden bg-gray-900 border-t border-gray-700 p-4 space-y-4 text-center shadow-inner">
           {auth ? (
             <>
-              <NavLink to="/" className="nav-link">
+              <NavLink to="/" className="block nav-link text-gray-200 hover:text-purple-400">
                 Products
               </NavLink>
-              <NavLink to="/add" className="block nav-link">
+              <NavLink to="/add" className="block nav-link text-gray-200 hover:text-purple-400">
                 Add Product
               </NavLink>
-              <NavLink to="/update" className="block nav-link">
-                Update Product
-              </NavLink>
-              <NavLink to="/profile" className="block nav-link">
+              <NavLink to="/profile" className="block nav-link text-gray-200 hover:text-purple-400">
                 Profile
               </NavLink>
               <NavLink
                 to="/signup"
-                className="block nav-link text-red-500"
+                className="block nav-link text-red-400 hover:text-red-500 font-semibold"
                 onClick={logout}
               >
                 Logout ({JSON.parse(auth).name})
@@ -126,13 +123,13 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <NavLink to="/" className="block nav-link">
+              <NavLink to="/" className="block nav-link text-gray-200 hover:text-purple-400">
                 Products
               </NavLink>
-              <NavLink to="/signup" className="block nav-link">
+              <NavLink to="/signup" className="block nav-link text-gray-200 hover:text-purple-400">
                 SignUp
               </NavLink>
-              <NavLink to="/login" className="block nav-link">
+              <NavLink to="/login" className="block nav-link text-gray-200 hover:text-purple-400">
                 Login
               </NavLink>
             </>
